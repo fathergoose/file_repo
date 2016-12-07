@@ -1,0 +1,16 @@
+{
+  "name": "file_repo",
+  "version": "1.0.0",
+  "description": "Accepts uploaded files and writes them to filesystem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "multer": "^1.2.0",
+    "serve-index": "^1.8.0"
+  }
+}
