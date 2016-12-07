@@ -10,7 +10,7 @@ app.use('/files', express.static('root'));
 
 app.post('/upload', upload.single('lefile'), function (req, res) {
     console.log(req.file);
-    res.send('im a response yo');
+    res.send('goodbye');
 });
 
 app.listen(3030, function () {
