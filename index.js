@@ -3,13 +3,13 @@ var express = require('express'),
     multer = require('multer');
 
 var app = express();
+var upload = multer({ dest: 'root/' });
 
 app.use('/files', serveIndex('root', {'icons': true}));
 app.use('/files', express.static('root'));
 
-app.post('/upload', function (req, res) {
+app.post('/upload', upload.single('nameOfFile'), function (req, res) {
     debugger;
-    console.log(req.body);
 });
 
 app.listen(3030, function () {
