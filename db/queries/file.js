@@ -23,7 +23,7 @@ function getAllFiles(req, res, next) {
     .catch(function (err) {
         return next(err);
     });
-} 
+}
 
 function createFile(req, res, next) {
     req.file.name = req.file.filename;
@@ -42,6 +42,6 @@ function createFile(req, res, next) {
         return next(err);
     });
 }
-function getFile() {};
-function updateFile() {};
-function removeFile() {};
+function getFile() {}
+function updateFile() {}
+function removeFile() {}
