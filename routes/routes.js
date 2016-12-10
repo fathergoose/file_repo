@@ -1,6 +1,7 @@
 var index = require('./index');
 var users = require('./users');
 var puppies = require('./puppies');
+var files = require('./files');
 var serveIndex = require('serve-index');
 var path = require('path');
 var express = require('express');
@@ -11,5 +12,6 @@ module.exports = function (app) {
 	app.use('/files', serveIndex('files', {'icons': true}));
 	app.use('/', index);
 	app.use('/users', users);
+	app.use('/uploads', files);
 	app.use('/api/puppies', puppies);	
 }
