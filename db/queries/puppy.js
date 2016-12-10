@@ -1,18 +1,4 @@
-var promise = require('bluebird');
-
-var options = {
-    promiseLib: promise
-};
-
-var pgp = require('pg-promise')(options);
-var config = {
-    host: 'localhost',
-    port: 5432,
-    database: 'file_repo',
-    user: 'alilseman',
-    password: 'password'
-};
-var db = pgp(config);
+var db = require('./db');
 
 module.exports = {
 	getAllPuppies: getAllPuppies,
