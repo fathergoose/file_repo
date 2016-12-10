@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 // Tutorial
-var db = require('../db/puppyQueries');
+var db = require('../db/queries/puppy');
 
 // Tutorial
 router.get('/', db.getAllPuppies);
