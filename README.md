@@ -1,5 +1,11 @@
 # File Repo
 
 ## TODO:
--Untested: Check that files are going to be saved to the right place (wo databasing)
--Findish upload route so we can test above
+Most of the rest API is finished, just need to make sure files are deleted from fs when deleted from db.
+Accomplish this by figureing out how to return data from pg about the deleted record
+Then 
+```javascript
+fs.unlink(data.path, function () {
+	//handle the error!
+})
+```
