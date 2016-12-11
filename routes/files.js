@@ -17,6 +17,7 @@ var upload = multer({ storage: storage });
 
 
 router.get('/', queries.getAllFiles);
+router.get('/:id', queries.getFile);
 router.post('/', upload.single('lefile'), hashFile, queries.createFile);
 
 function hashFile (req, res, next) {

@@ -25,8 +25,22 @@ function getAllFiles(req, res, next) {
     });
 }
 
+function getFile(req, res, next) {
+    var sql = 'SELECT * FROM files WHERE id=$1';
+    var id = parseInt(req.params.id);
+
+    db.one(sql, id).then(function (data) {
+        res.status(200).json({
+            status: 'success',
+            data: data,
+            message: 'retrieved one file'       
+        });
+    }).catch(function (err) {
+        return next(err);
+    });
+}
+
 function createFile(req, res, next) {
-    req.file.name = req.file.filename;
     var sql = [
         'INSERT INTO files (name, path, hash)',
         'VALUES(${originalname}, ${path}, ${hash})'
@@ -35,12 +49,12 @@ function createFile(req, res, next) {
     db.none(sql, req.file).then(function () {
         res.status(200).json({
             status: 'success',
-            message: 'Inserted one file'
+            message: 'inserted one file'
         });
     }).catch(function (err) {
         return next(err);
     });
 }
-function getFile() {}
+
 function updateFile() {}
 function removeFile() {}
