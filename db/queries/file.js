@@ -9,18 +9,13 @@ module.exports = {
 };
 
 function getAllFiles(req, res, next) {
-    db
-    .any('SELECT * FROM files')
-    .then(function (data) {
-        res
-        .status(200)
-        .json({
+    db.any('SELECT * FROM files').then(function (data) {
+        res.status(200).json({
             status: 'success',
             data: data,
-            message: 'Retrieved All Files'
+            message: 'retrieved all files'
         });
-    })
-    .catch(function (err) {
+    }).catch(function (err) {
         return next(err);
     });
 }
