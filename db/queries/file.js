@@ -29,7 +29,7 @@ function getFile(req, res, next) {
         res.status(200).json({
             status: 'success',
             data: data,
-            message: 'retrieved one file'       
+            message: 'retrieved one file'
         });
     }).catch(function (err) {
         return next(err);
@@ -73,12 +73,14 @@ function updateFile(req, res, next) {
 
 function removeFile(req, res, next) {
     var sql = 'DELETE FROM files WHERE id=$1 RETURNING path'
-    id = parseInt(req.params.id);
+    var id = parseInt(req.params.id);
     db.result(sql, id).then(function (result) {
-        if ( result.rowCount > 0 ) {
+        if (result.rowCount > 0) {
             for (var i = 0; i < result.rows.length; i++) {
                 fs.unlink(result.rows[i].path, function (err) {
-                    if (err) { throw err; }
+                    if (err) {
+                        throw err;
+                    }
                 });
             }
         }

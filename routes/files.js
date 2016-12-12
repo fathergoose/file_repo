@@ -26,14 +26,10 @@ function hashFile (req, res, next) {
     });
 }
 
-function deleteFile (req, res, next) {
-    fs.unlink();
-}
-
 router.get('/', queries.getAllFiles);
 router.get('/:id', queries.getFile);
 router.post('/', upload.single('lefile'), hashFile, queries.createFile);
-router.put('/:id', upload.single('lefile'), hashFile, queries.updateFile); // Makes no sense
+router.put('/:id', upload.single('lefile'), hashFile, queries.updateFile);
 router.delete('/:id', queries.removeFile);
 
 module.exports = router;
