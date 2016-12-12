@@ -1,3 +1,4 @@
+var fs = require('fs');
 var db = require('../db');
 
 module.exports = {
@@ -71,10 +72,16 @@ function updateFile(req, res, next) {
 }
 
 function removeFile(req, res, next) {
-    var sql = 'DELETE FROM files WHERE id=$1'
+    var sql = 'DELETE FROM files WHERE id=$1 RETURNING path'
     id = parseInt(req.params.id);
     db.result(sql, id).then(function (result) {
-        //result = result.toString();
+        if ( result.rowCount > 0 ) {
+            for (var i = 0; i < result.rows.length; i++) {
+                fs.unlink(result.rows[i].path, function (err) {
+                    if (err) { throw err; }
+                });
+            }
+        }
         res.status(200).json({
             status: 'success',
             message: result
