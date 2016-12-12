@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 
 var timestamp = Math.floor(new Date() / 1000);
-var description = process.argv[2];
+var description = process.argv[process.argv.length - 1];
 var filename = `${timestamp}_${description}.sql`;
 var filepath = path.join(__dirname, `../db/migrations/${filename}`);
 
