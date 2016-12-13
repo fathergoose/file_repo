@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var path = require('path');
+var fs = require('fs');
+var exec = require('child_process').exec;
+
+var migrations = path.join(__dirname, '../db/migrations')
+
+program
+.version('0.0.1')
+.arguments('<file>')
+.option('-f --file <file>', 'run migration from specific file')
+.option('-A, --all', 'run all migrations in db/migrations')
+.parse(process.argv)
+
+
+	console.log(program.file);
+
+	// if (program.all) {
+	// 	fs.readdir(migrations, function (err, files) {
+	// 		var sqlFiles = [];
+	// 		files.forEach(function (f) {
+	// 			if (path.extname(f) === '.sql') {
+	// 				sqlFiles.push(path.join(migrations, f));
+	// 			}
+	// 		});
+	// 		sqlFiles.forEach(function (p) {
+	// 			exec(`psql -d file_repo -f ${f}`, function (err, stdout, stderr) {
+	// 				console.log(stdout);
+	// 				console.log(stderr);
+	// 				if (err !== null) {
+	// 					console.log(err);
+	// 				}
+	// 			});
+	// 		});
+	// 	});
+	// } else {
+		var sqlFile = '/Users/alilseman/code/file_repo/db/migrations/' + process.argv[2];
+		exec(`psql -d file_repo -f ${sqlFile}`, function (err, stdout, stderr) {
+			console.log(stdout);
+			console.log(stderr);
+			if (err !== null) {
+				console.log(err);
+			}
+		});
+	// }
+
