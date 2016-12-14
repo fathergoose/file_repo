@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+	each file in files
+
+		h3= file.name
+		li 
+			b= 'id: ' 
+			span= file.id
+		li 
+			b= 'path: ' 
+			span= file.path
+		li
+			b= 'hash: '
+			span= file.hash
+		li
+			b= 'url: '
+			span= file.url

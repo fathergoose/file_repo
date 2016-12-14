@@ -76,13 +76,13 @@ function removeFile(req, res, next) {
     var id = parseInt(req.params.id);
     db.result(sql, id).then(function (result) {
         if (result.rowCount > 0) {
-            for (var i = 0; i < result.rows.length; i++) {
-                fs.unlink(result.rows[i].path, function (err) {
+            result.rows.forEach(function (row) {
+                fs.unlink(row.path, function (err) {
                     if (err) {
                         throw err;
                     }
                 });
-            }
+            })
         }
         res.status(200).json({
             status: 'success',

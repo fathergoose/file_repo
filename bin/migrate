@@ -15,34 +15,33 @@ program
 .parse(process.argv)
 
 
-	console.log(program.file);
 
-	// if (program.all) {
-	// 	fs.readdir(migrations, function (err, files) {
-	// 		var sqlFiles = [];
-	// 		files.forEach(function (f) {
-	// 			if (path.extname(f) === '.sql') {
-	// 				sqlFiles.push(path.join(migrations, f));
-	// 			}
-	// 		});
-	// 		sqlFiles.forEach(function (p) {
-	// 			exec(`psql -d file_repo -f ${f}`, function (err, stdout, stderr) {
-	// 				console.log(stdout);
-	// 				console.log(stderr);
-	// 				if (err !== null) {
-	// 					console.log(err);
-	// 				}
-	// 			});
-	// 		});
-	// 	});
-	// } else {
-		var sqlFile = '/Users/alilseman/code/file_repo/db/migrations/' + process.argv[2];
-		exec(`psql -d file_repo -f ${sqlFile}`, function (err, stdout, stderr) {
-			console.log(stdout);
-			console.log(stderr);
-			if (err !== null) {
-				console.log(err);
+if (program.all) {
+	fs.readdir(migrations, function (err, files) {
+		var sqlFiles = [];
+		files.forEach(function (f) {
+			if (path.extname(f) === '.sql') {
+				sqlFiles.push(path.join(migrations, f));
 			}
 		});
-	// }
+		sqlFiles.forEach(function (p) {
+			exec(`psql -d file_repo -f ${f}`, function (err, stdout, stderr) {
+				console.log(stdout);
+				console.log(stderr);
+				if (err !== null) {
+					console.log(err);
+				}
+			});
+		});
+	});
+} else {
+	var sqlFile = path.join(migrations, process.argv[2]);
+	exec(`psql -d file_repo -f ${sqlFile}`, function (err, stdout, stderr) {
+		console.log(stdout);
+		console.log(stderr);
+		if (err !== null) {
+			console.log(err);
+		}
+	});
+}
 
