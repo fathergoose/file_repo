@@ -1,6 +1,19 @@
 extends ../layout
 
 block content
+	div(class="form")
+		h2="Look up a specific file by id"
+		label="Record ID: "
+		input(
+			id='id-input',
+		    type='text',
+		    name='id'
+		)
+		button(id="look-up")="Go"
+	div
+
+
+
 	each file in files
 
 		h3= file.name
