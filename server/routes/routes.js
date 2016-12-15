@@ -6,7 +6,7 @@ var path = require('path');
 var express = require('express');
 
 module.exports = function (app) {
-    app.use('/', express.static(path.join(__dirname, '../public')));
+    // app specific routes; config for SPA is in ../app.js
     app.use('/files', express.static(path.join(__dirname, '../files')));
     app.use('/files', serveIndex('files', {'icons': true}));
     app.use('/api/files', files);
