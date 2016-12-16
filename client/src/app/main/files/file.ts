@@ -1,5 +1,7 @@
 export class File {
-    name: string;
-    url: string;
-    hash: string;
+    constructor(
+        name: string,
+        url: string,
+        hash: string
+    ) {}
 }
