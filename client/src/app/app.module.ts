@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { FilesComponent } from './files/files.component';
+import { UploaderComponent } from './uploader/uploader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilesComponent
+    FilesComponent,
+    UploaderComponent
   ],
   imports: [
     BrowserModule,
