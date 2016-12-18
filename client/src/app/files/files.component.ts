@@ -10,7 +10,6 @@ import { File } from './file';
 export class FilesComponent implements OnInit {
     errorMessage: string;
     files: File[];
-    mode = 'Observable';
 
     constructor(private fileService: FilesService) { }
 
