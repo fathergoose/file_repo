@@ -1,0 +1,9 @@
+.tabs {
+    display: inline-block;
+    padding: 0em 1em 0em 1em;
+}
+
+.tabbar {
+    min-width: 100%;
+    background-color: #ccc;
+}

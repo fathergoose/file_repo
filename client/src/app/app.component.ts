@@ -8,5 +8,5 @@ import { FilesService } from './files/files.service'
   providers: [FilesService]
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'File repo and puppies app ;-)';
 }

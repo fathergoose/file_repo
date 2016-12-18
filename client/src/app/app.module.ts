@@ -10,7 +10,7 @@ import { UploaderComponent } from './uploader/uploader.component';
 
 const appRoutes: Routes = [
     { path: 'files', component: FilesComponent }
-    //{ path: '', component: AppComponent }
+    // { path: '', component: AppComponent } this will recurse as setup now
 ]
 
 @NgModule({
