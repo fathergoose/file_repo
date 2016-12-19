@@ -15,19 +15,23 @@ export class PuppiesService {
                         .catch(this.handleError);
     }
 
+    addPuppy(puppy: Puppy): Observable<Puppy> {
+        return this.post(puppy);
+    }
+
     private extractData(res: Response) {
         let body = res.json();
         return body.data || {};
     }
 
-    // private post(files: File[]): Observable<File[]> {
-    //     let headers = new Headers({
-    //         'Content-Type': 'application/json'
-    //     });
-    //     return this.http.post(this.apiUrl, )
-    //                     .map(this.extractData)
-    //                     .catch(this.handleError);
-    // }
+    private post(puppy: Puppy): Observable<Puppy> {
+        let headers = new Headers({
+            'Content-Type': 'application/json'
+        });
+        return this.http.post(this.apiUrl, JSON.stringify(puppy), { headers: headers } )
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    }
 
     private handleError (error: Response | any) {
         let errMsg: string;

@@ -1,6 +1,29 @@
 <p>
-  puppies works!
+    puppies works!
 </p>
+<div>
+    <h3>Add a new Puppy</h3>
+    <form
+        [formGroup]="puppyForm"
+        (ngSubmit)="addPuppy(puppyForm.value)"
+    >
+        <label>Name:</label>
+        <input type="text" formControlName="name"/>
+
+        <label>Breed:</label>
+        <input type="text" formControlName="breed"/>
+
+        <label>Age:</label>
+        <input type="text" formControlName="age"/>
+
+        <label>Sex:</label>
+        <input type="text" formControlName="sex"/>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<h3>All Puppies</h3>
 <ul>
-    <li *ngFor="let puppy of puppies">{{puppy.name}}</li>
+    <li *ngFor="let puppy of puppies">ID: {{puppy.id}} Name: {{puppy.name}}</li>
 </ul>
