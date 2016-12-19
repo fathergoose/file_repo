@@ -41,13 +41,16 @@ function getSinglePuppy(req, res, next) {
 
 function createPuppy(req, res, next) {
   req.body.age = parseInt(req.body.age);
-  db.none('insert into pups(name, breed, age, sex)' +
-      'values(${name}, ${breed}, ${age}, ${sex})',
+  db.result('INSERT INTO pups(id, name, breed, age, sex)' +
+      'VALUES(DEFAULT, ${name}, ${breed}, ${age}, ${sex})' +
+      'RETURNING id',
     req.body)
-    .then(function () {
+    .then(function (result) {
+      req.body.id = result.rows[0].id;
       res.status(200)
         .json({
           status: 'success',
+          data: req.body,
           message: 'Inserted one puppy'
         });
     })
