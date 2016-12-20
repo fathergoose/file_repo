@@ -25,5 +25,10 @@
 
 <h3>All Puppies</h3>
 <ul>
-    <li *ngFor="let puppy of puppies">ID: {{puppy.id}} Name: {{puppy.name}}</li>
+    <li *ngFor="let puppy of puppies">
+        ID: {{puppy.id}} Name: {{puppy.name}}
+        <button (click)="removePuppy(puppy, $event)">
+            Remove
+        </button>
+    </li>
 </ul>

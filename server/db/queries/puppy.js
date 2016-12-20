@@ -80,11 +80,14 @@ function removePuppy(req, res, next) {
   db.result('delete from pups where id = $1', pupID)
     .then(function (result) {
       /* jshint ignore:start */
+    //  setTimeout( () => {
       res.status(200)
         .json({
           status: 'success',
-          message: `Removed ${result.rowCount} puppy`
-        });
+          message: `Removed ${result.rowCount} puppy`,
+          data: result
+      });
+   // }, 000)
       /* jshint ignore:end */
     })
     .catch(function (err) {

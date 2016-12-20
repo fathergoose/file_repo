@@ -19,6 +19,10 @@ export class PuppiesService {
         return this.post(puppy);
     }
 
+    removePuppy(puppy: Puppy): Observable<any> {
+        return this.delete(puppy);
+    }
+
     private extractData(res: Response) {
         let body = res.json();
         return body.data || {};
@@ -33,7 +37,9 @@ export class PuppiesService {
                         .catch(this.handleError);
     }
 
-    private delete(puppy: Puppy): Observable<Puppy> {
+    // TODO: Make use of this method in the component and template
+    //       perhaps a delete button for each puppy?
+    private delete(puppy: Puppy): Observable<any> {
         let headers = new Headers({
             'Content-Type': 'application/json'
         });
