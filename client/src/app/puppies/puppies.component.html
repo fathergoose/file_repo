@@ -1,35 +1,44 @@
-<p>
-    puppies works!
-</p>
 <div>
     <h3>Add a new Puppy</h3>
     <form
         [formGroup]="puppyForm"
         (ngSubmit)="addPuppy(puppyForm.value)"
+        class="form-inline"
     >
+    <div class="form-group">
         <label>Name:</label>
-        <input type="text" formControlName="name"/>
+        <input type="text" formControlName="name" class="form-control"/>
 
         <label>Breed:</label>
-        <input type="text" formControlName="breed"/>
+        <input type="text" formControlName="breed" class="form-control"/>
 
         <label>Age:</label>
-        <input type="text" formControlName="age"/>
+        <input type="text" formControlName="age" class="form-control"/>
 
         <label>Sex:</label>
-        <input type="text" formControlName="sex"/>
+        <input type="text" formControlName="sex" class="form-control"/>
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
     </form>
 </div>
+<div class="row">
+    <div class="col-md-6">
+        <h3>All Puppies</h3>
 
-<h3>All Puppies</h3>
-<ul>
-    <li *ngFor="let puppy of puppies">
-        ID: {{puppy.id}} Name: {{puppy.name}}
-        <button (click)="removePuppy(puppy, $event)">Remove</button>
-        <button (click)="selectPuppy(puppy, $event)"> ShowDetail </button>
-    </li>
-</ul>
-
-<app-puppy-detail *ngIf="selectedPuppy !== undefined" [puppy]="selectedPuppy"></app-puppy-detail>
+        <table class="table">
+            <th>Name</th>
+            <th></th>
+            <th></th>
+            <tr *ngFor="let puppy of puppies">
+                <td>{{puppy.name}}</td>
+                <td><button (click)="removePuppy(puppy, $event)" class="btn">Remove</button></td>
+                <td><button (click)="selectPuppy(puppy, $event)" class="btn"> ShowDetail </button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <app-puppy-detail *ngIf="selectedPuppy !== undefined" [puppy]="selectedPuppy">
+        </app-puppy-detail>
+    </div>
+</div>
