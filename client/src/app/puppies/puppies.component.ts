@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PuppiesService } from './puppies.service';
 import { Puppy } from './puppy';
@@ -13,8 +14,11 @@ export class PuppiesComponent implements OnInit {
     puppyForm: FormGroup;
     errorMessage: string;
     puppies: Puppy[];
+    selectedPuppy: Puppy;
+    private pupId: string;
 
     constructor(
+        private router: ActivatedRoute,
         private puppiesService: PuppiesService,
         private formBuilder: FormBuilder
     ) { }
@@ -28,6 +32,11 @@ export class PuppiesComponent implements OnInit {
             age: '',
             sex: ''
         });
+    }
+
+    selectPuppy(puppy: Puppy, event: Event) {
+        event.stopPropagation();
+        this.selectedPuppy = puppy;
     }
 
     getPuppies(): void {
@@ -60,5 +69,6 @@ export class PuppiesComponent implements OnInit {
                 err => this.errorMessage = <any>err
             )
     }
+
 
 }

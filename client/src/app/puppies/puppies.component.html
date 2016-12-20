@@ -27,8 +27,9 @@
 <ul>
     <li *ngFor="let puppy of puppies">
         ID: {{puppy.id}} Name: {{puppy.name}}
-        <button (click)="removePuppy(puppy, $event)">
-            Remove
-        </button>
+        <button (click)="removePuppy(puppy, $event)">Remove</button>
+        <button (click)="selectPuppy(puppy, $event)"> ShowDetail </button>
     </li>
 </ul>
+
+<app-puppy-detail *ngIf="selectedPuppy !== undefined" [puppy]="selectedPuppy"></app-puppy-detail>

@@ -8,10 +8,12 @@ import { AppComponent } from './app.component';
 import { FilesComponent } from './files/files.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { PuppiesComponent } from './puppies/puppies.component';
+import { PuppyDetailComponent } from './puppies/puppy-detail/puppy-detail.component';
 
 const appRoutes: Routes = [
     { path: 'files', component: FilesComponent },
-    { path: 'puppies', component: PuppiesComponent }
+    { path: 'puppies', component: PuppiesComponent },
+    { path: 'puppies/detail/:id', component: PuppiesComponent }
     // { path: '', component: AppComponent } this will recurse as setup now
 ]
 
@@ -20,7 +22,8 @@ const appRoutes: Routes = [
         AppComponent,
         FilesComponent,
         UploaderComponent,
-        PuppiesComponent
+        PuppiesComponent,
+        PuppyDetailComponent
     ],
     imports: [
         BrowserModule,
