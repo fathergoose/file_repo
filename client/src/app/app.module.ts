@@ -10,6 +10,7 @@ import { UploaderComponent } from './uploader/uploader.component';
 import { PuppiesComponent } from './puppies/puppies.component';
 import { PuppyDetailComponent } from './puppies/puppy-detail/puppy-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { Ng2UploaderModule } from 'ng2-uploader';
 
 const appRoutes: Routes = [
     { path: 'files', component: FilesComponent },
@@ -25,14 +26,15 @@ const appRoutes: Routes = [
         UploaderComponent,
         PuppiesComponent,
         PuppyDetailComponent,
-        NavbarComponent
+        NavbarComponent,
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes),
+        Ng2UploaderModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

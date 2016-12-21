@@ -1,3 +1,8 @@
 <p>
   uploader works!
 </p>
+<input type="file"
+       ngFileSelect
+       [options]="options"
+       (onUpload)="handleUpload($event)"
+       (beforeUpload)="beforeUpload($event)">
