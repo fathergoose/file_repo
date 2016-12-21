@@ -18,7 +18,7 @@ export class UploaderComponent {
         fieldName: 'lefile'
 
     };
-    sizeLimit = 2000000;
+    sizeLimit = 1000000000000000000;
 
     handleUpload(data): void {
         if (data && data.response) {
