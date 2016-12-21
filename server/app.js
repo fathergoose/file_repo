@@ -38,20 +38,41 @@ if (app.get('env') === 'development') {
 /**
  * Production Settings
  */
-if (app.get('env') === 'production') {
+// This stuff came from the angular + nodejs project guide
+// if (app.get('env') === 'production') {
 
-    // changes it to use the optimized version for production
-    app.use(express.static(path.join(__dirname, '/dist')));
+//     // changes it to use the optimized version for production
+//     app.use(express.static(path.join(__dirname, '/dist')));
 
-    // production error handler
-    // no stacktraces leaked to user
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: {}
-        });
+//     // production error handler
+//     // no stacktraces leaked to user
+//     app.use(function(err, req, res, next) {
+//         res.status(err.status || 500);
+//         res.render('error', {
+//             message: err.message,
+//             error: {}
+//         });
+//     });
+// }
+
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status( err.code || 500 )
+    .json({
+      status: 'error',
+      message: err
     });
+  });
 }
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500)
+  .json({
+    status: 'error',
+    message: err.message
+  });
+});
 
 module.exports = app;
