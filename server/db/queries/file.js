@@ -38,9 +38,11 @@ function getFile(req, res, next) {
 
 function createFile(req, res, next) {
     var sql = [
-        'INSERT INTO files (name, path, hash)',
-        'VALUES(${originalname}, ${path}, ${hash})'
+        'INSERT INTO files (name, path, hash, url)',
+        'VALUES(${originalname}, ${path}, ${hash}, ${url})'
     ].join('');
+
+    req.file.url = '/repo/files/' + req.file.filename;
 
     db.none(sql, req.file).then(function () {
         res.status(200).json({
