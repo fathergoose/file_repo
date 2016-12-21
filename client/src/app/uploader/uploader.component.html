@@ -5,4 +5,7 @@
        ngFileSelect
        [options]="options"
        (onUpload)="handleUpload($event)"
-       (beforeUpload)="beforeUpload($event)">
+       (beforeUpload)="beforeUpload($event)"
+       multiple>
+
+Response: {{ uploadFile | json }}
