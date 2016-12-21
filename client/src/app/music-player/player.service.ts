@@ -5,7 +5,7 @@ import { Track } from './track'
 export class PlayerService {
 
     constructor() { }
-    private playlist: Track[] = [ ];
+    public playlist: Track[] = [ ];
     private audioElement: HTMLAudioElement = document.createElement('audio');
     private current: Number;
     private paused: Boolean = false;

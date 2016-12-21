@@ -9,8 +9,10 @@ import { FilesService } from '../files/files.service';
     styleUrls: ['./music-player.component.css']
 })
 export class MusicPlayerComponent implements OnInit {
-    private tracks: Track[];
     private errorMessage: string;
+    private tracks: Track[];
+    public playlist = this.playerService.playlist;
+    
 
     constructor(
         private playerService: PlayerService,
@@ -24,6 +26,7 @@ export class MusicPlayerComponent implements OnInit {
     addTrack(track: Track, event: Event): void {
         event.stopPropagation();
         this.playerService.addTrack(track);
+        this.playlist = this.playerService.playlist;
     }
 
     play(event: Event): void {
