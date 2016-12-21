@@ -12,29 +12,16 @@ export class FilesService {
 
     constructor(private http: Http) { }
 
-    getFiles (): Observable<File[]> {
+    public getFiles (): Observable<File[]> {
         return this.http.get(this.apiUrl)
                         .map(this.extractData)
                         .catch(this.handleError);
     }
 
-    // uploadFiles (files: File[]): Observable<File[]> {
-    //     this.post(files);
-    // }
-
     private extractData(res: Response) {
         let body = res.json();
         return body.data || {};
     }
-
-    // private post(files: File[]): Observable<File[]> {
-    //     let headers = new Headers({
-    //         'Content-Type': 'application/json'
-    //     });
-    //     return this.http.post(this.apiUrl, )
-    //                     .map(this.extractData)
-    //                     .catch(this.handleError);
-    // }
 
     private handleError (error: Response | any) {
         let errMsg: string;

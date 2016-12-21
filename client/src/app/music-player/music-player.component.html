@@ -1,3 +1,9 @@
 <p>
   music-player works!
 </p>
+<button (click)="play($event)">Play</button>
+<button (click)="pause($event)">Pause</button>
+<div *ngFor="let track of tracks" ><button (click)="addTrack(track, $event)">add</button> 
+     <div>{{track.name}}</div>
+     <div>URL: {{track.url}}</div>
+</div>
