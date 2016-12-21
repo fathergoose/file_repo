@@ -1,9 +1,10 @@
 <p>
-  files works!
+    files works!
 </p>
 
-<ul>
-    <li *ngFor="let file of files">{{file.name}} URL: {{file.path}} </li>
-</ul>
+<div *ngFor="let file of files">
+    <b>{{file.name}}</b>
+    <a target="_blank" href="{{file.url}}">Listen</a>
+</div>
 
 <app-uploader></app-uploader>

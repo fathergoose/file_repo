@@ -11,6 +11,7 @@ import { PuppiesComponent } from './puppies/puppies.component';
 import { PuppyDetailComponent } from './puppies/puppy-detail/puppy-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { Ng2UploaderModule } from 'ng2-uploader';
+import { MusicPlayerComponent } from './music-player/music-player.component';
 
 const appRoutes: Routes = [
     { path: 'files', component: FilesComponent },
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
         PuppiesComponent,
         PuppyDetailComponent,
         NavbarComponent,
+        MusicPlayerComponent,
     ],
     imports: [
         BrowserModule,
