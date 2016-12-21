@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Puppy } from '../puppy';
+import { PuppiesService } from '../puppies.service'
 
 @Component({
   selector: 'app-puppy-detail',
@@ -12,7 +13,8 @@ export class PuppyDetailComponent implements OnInit {
   private pupId: string;
 
   constructor( 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private puppiesService: PuppiesService
     ) {}
 
   ngOnInit() {
@@ -20,5 +22,24 @@ export class PuppyDetailComponent implements OnInit {
       this.pupId = params['id'];
     });
   }
+
+  // TODO implement a way of getting puppies pulled from the 
+  // list belonging to the parent
+  // removePuppy(puppy: Puppy, event: Event): void {
+  //       event.stopPropagation();
+  //       this.puppiesService.removePuppy(puppy)
+  //           .subscribe(
+  //               result => {
+  //                   if (result.rowCount === 1) {
+  //                       this.puppies.forEach((element, index) => {
+  //                           if (element.id === puppy.id) {
+  //                               this.puppies.splice(index, 1);
+  //                           }
+  //                       });
+  //                   }
+  //               },
+  //               err => this.errorMessage = <any>err
+  //           )
+  //   }
 
 }

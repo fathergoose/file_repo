@@ -9,6 +9,7 @@ import { FilesComponent } from './files/files.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { PuppiesComponent } from './puppies/puppies.component';
 import { PuppyDetailComponent } from './puppies/puppy-detail/puppy-detail.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const appRoutes: Routes = [
     { path: 'files', component: FilesComponent },
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
         FilesComponent,
         UploaderComponent,
         PuppiesComponent,
-        PuppyDetailComponent
+        PuppyDetailComponent,
+        NavbarComponent
     ],
     imports: [
         BrowserModule,

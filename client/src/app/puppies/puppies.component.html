@@ -32,8 +32,8 @@
             <th></th>
             <tr *ngFor="let puppy of puppies">
                 <td>{{puppy.name}}</td>
-                <td><button (click)="removePuppy(puppy, $event)" class="btn">Remove</button></td>
-                <td><button (click)="selectPuppy(puppy, $event)" class="btn"> ShowDetail </button></td>
+                <td><button (click)="removePuppy(puppy, $event)" class="btn btn-danger">Remove</button></td>
+                <td><button (click)="selectPuppy(puppy, $event)" class="btn btn-info"> ShowDetail </button></td>
             </tr>
         </table>
     </div>
