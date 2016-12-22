@@ -2,7 +2,7 @@
     playlist works!
 </p>
 
-<div *ngFor="let track of playerService.playlist">
-    <a (click)="removeTrack(track, $event)">X</a>
+<div *ngFor="let track of playerService.playlist; let i=index">
+    <a (click)="removeTrack(i, $event)">X</a>
     {{track.name}}
 </div>

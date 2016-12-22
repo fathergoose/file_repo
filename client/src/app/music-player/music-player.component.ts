@@ -11,7 +11,6 @@ import { FilesService } from '../files/files.service';
 export class MusicPlayerComponent implements OnInit {
     private errorMessage: string;
     private tracks: Track[];
-    public playlist = this.playerService.playlist;
     
 
     constructor(
@@ -26,7 +25,6 @@ export class MusicPlayerComponent implements OnInit {
     addTrack(track: Track, event: Event): void {
         event.stopPropagation();
         this.playerService.addTrack(track);
-        this.playlist = this.playerService.playlist;
     }
 
     play(event: Event): void {

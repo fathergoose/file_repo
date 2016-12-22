@@ -3,18 +3,21 @@ import { Track } from '../track';
 import { PlayerService } from '../player.service';
 
 @Component({
-  selector: 'app-playlist',
-  templateUrl: './playlist.component.html',
-  styleUrls: ['./playlist.component.css']
+    selector: 'app-playlist',
+    templateUrl: './playlist.component.html',
+    styleUrls: ['./playlist.component.css']
 })
 export class PlaylistComponent implements OnInit {
 
-  constructor() { }
+    constructor() { }
 
-  @Input() playerService: PlayerService;
-  // @Output('click') removeTrack = new EventEmitter(); Figrue out the output / Event listener stuff
+    @Input() playerService: PlayerService;
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
+
+    removeTrack(index: number, event: Event) {
+        this.playerService.removeTrack(index);
+    }
 
 }

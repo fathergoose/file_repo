@@ -28,4 +28,8 @@ export class PlayerService {
         this.audioElement.pause();
     }
 
+    removeTrack(index: number): void {
+        this.playlist.splice(index, 1);
+    }
+
 }
