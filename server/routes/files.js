@@ -3,6 +3,7 @@ var express = require('express');
 var multer = require('multer');
 var queries = require('../db/queries/file');
 var md5 = require('md5-file/promise');
+var taglib = require('taglib2');
 
 var router = express.Router();
 
@@ -26,10 +27,19 @@ function hashFile (req, res, next) {
     });
 }
 
+function readTags(req, res, next) {
+    try {
+        req.file.tags = taglib.readTagsSync(req.file.path);
+    } catch (err) {
+        next(err);
+    }
+    next();
+}
+
 router.get('/', queries.getAllFiles);
 router.get('/:id', queries.getFile);
-router.post('/', upload.single('lefile'), hashFile, queries.createFile);
-router.put('/:id', upload.single('lefile'), hashFile, queries.updateFile);
+router.post('/', upload.single('lefile'), hashFile, readTags, queries.createFile);
+router.put('/:id', upload.single('lefile'), hashFile, readTags, queries.updateFile);
 router.delete('/:id', queries.removeFile);
 
 module.exports = router;
