@@ -42,7 +42,8 @@ CREATE TABLE files (
     id integer NOT NULL,
     name character varying,
     path character varying,
-    hash character(32)
+    hash character(32),
+    url character varying
 );
 
 
@@ -119,6 +120,44 @@ CREATE TABLE things (
 ALTER TABLE things OWNER TO alilseman;
 
 --
+-- Name: tracks; Type: TABLE; Schema: public; Owner: alilseman
+--
+
+CREATE TABLE tracks (
+    id integer NOT NULL,
+    path character varying,
+    title character varying,
+    artist character varying,
+    album character varying,
+    tracknum smallint,
+    hash character(32)
+);
+
+
+ALTER TABLE tracks OWNER TO alilseman;
+
+--
+-- Name: tracks_id_seq; Type: SEQUENCE; Schema: public; Owner: alilseman
+--
+
+CREATE SEQUENCE tracks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tracks_id_seq OWNER TO alilseman;
+
+--
+-- Name: tracks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: alilseman
+--
+
+ALTER SEQUENCE tracks_id_seq OWNED BY tracks.id;
+
+
+--
 -- Name: files id; Type: DEFAULT; Schema: public; Owner: alilseman
 --
 
@@ -130,6 +169,13 @@ ALTER TABLE ONLY files ALTER COLUMN id SET DEFAULT nextval('files_id_seq'::regcl
 --
 
 ALTER TABLE ONLY pups ALTER COLUMN id SET DEFAULT nextval('pups_id_seq'::regclass);
+
+
+--
+-- Name: tracks id; Type: DEFAULT; Schema: public; Owner: alilseman
+--
+
+ALTER TABLE ONLY tracks ALTER COLUMN id SET DEFAULT nextval('tracks_id_seq'::regclass);
 
 
 --
@@ -146,6 +192,14 @@ ALTER TABLE ONLY files
 
 ALTER TABLE ONLY pups
     ADD CONSTRAINT pups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracks tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: alilseman
+--
+
+ALTER TABLE ONLY tracks
+    ADD CONSTRAINT tracks_pkey PRIMARY KEY (id);
 
 
 --

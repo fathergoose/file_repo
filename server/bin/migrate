@@ -5,7 +5,8 @@ var path = require('path');
 var fs = require('fs');
 var exec = require('child_process').exec;
 
-var migrations = path.join(__dirname, '../db/migrations')
+var db = path.join(__dirname, '../db');
+var migrations = path.join(db , 'migrations');
 
 program
 .version('0.0.1')
@@ -42,6 +43,19 @@ if (program.all) {
 		if (err !== null) {
 			console.log(err);
 		}
+		var timestamp = new Date();
+		timestamp = Math.floor(timestamp/1000);
+		var schemaFile = path.join(db, timestamp + '_schema.sql');
+		exec(`pg_dump -s file_repo > ${schemaFile}`, function (err, stdout, stderr) {
+			console.log(stdout);
+			console.log(stderr);
+			if (err !== null) {
+				console.log(err);
+			};
+		})
 	});
 }
+
+
+;
 
