@@ -130,7 +130,8 @@ CREATE TABLE tracks (
     artist character varying,
     album character varying,
     tracknum smallint,
-    hash character(32)
+    hash character(32),
+    url character varying
 );
 
 
