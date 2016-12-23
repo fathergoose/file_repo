@@ -9,7 +9,6 @@ var tracks = require('./tracks');
 module.exports = function (app) {
     // app specific routes; config for SPA is in ../app.js
     app.use('/repo/files', express.static(path.join(__dirname, '../files')));
-    //app.use('/files', serveIndex('files', {'icons': true}));
     app.use('/api/files', files);
     app.use('/api/tracks', tracks);
     app.use('/api/puppies', puppies);   
