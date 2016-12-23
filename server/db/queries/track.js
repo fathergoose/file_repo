@@ -37,8 +37,8 @@ function getTrack(req, res, next) {
 
 function createTrack(req, res, next) {
     var sql = [
-        'INSERT INTO Tracks (name, path, hash, url)',
-        'VALUES(${originalname}, ${path}, ${hash}, ${url})'
+        'INSERT INTO Tracks (title, path, hash, url, tracknum, album, artist)',
+        'VALUES(${tag.title}, ${path}, ${hash}, ${url}, ${tag.track}, ${tag.album}, ${tag.artist})'
     ].join('');
 
     req.file.url = '/repo/files/' + req.file.filename;
