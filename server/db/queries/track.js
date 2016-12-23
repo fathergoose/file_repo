@@ -58,12 +58,17 @@ function removeTrack(req, res, next) {
     db.result(sql, id).then(function (result) {
         if (result.rowCount > 0) {
             result.rows.forEach(function (row) {
-                fs.unlink(row.path, function (err) {
-                    if (err) {
-                        throw err;
-                    }
-                });
-            })
+                try {
+                    fs.unlink(row.path, function (err) {
+                        if (err) {
+                            console.log(err);
+                            throw err;
+                        }
+                    });
+                } catch (error) {
+                    console.log(err); 
+                }
+            });
         }
         res.status(200).json({
             status: 'success',
