@@ -37,13 +37,12 @@ function getTrack(req, res, next) {
 
 function createTrack(req, res, next) {
     var sql = [
-        'INSERT INTO Tracks (title, path, hash, url, tracknum, album, artist)',
-        'VALUES(${tag.title}, ${path}, ${hash}, ${url}, ${tag.track}, ${tag.album}, ${tag.artist})'
-    ].join('');
-
+        'INSERT INTO tracks (title, path, hash, url, tracknum, album, artist)',
+        'VALUES(${title}, ${path}, ${hash}, ${url}, ${tracknum}, ${album}, ${artist})'
+    ].join(' ');
     req.file.url = '/repo/files/' + req.file.filename;
 
-    db.none(sql, req.file).then(function () {
+    db.any(sql, req.file).then(function () {
         res.status(200).json({
             status: 'success',
             message: 'inserted one track'

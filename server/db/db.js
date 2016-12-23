@@ -1,8 +1,11 @@
 var promise = require('bluebird');
+var monitor = require("pg-monitor");
 
 var options = {
     promiseLib: promise
 };
+
+monitor.attach(options);
 
 var pgPromise = require('pg-promise')(options);
 

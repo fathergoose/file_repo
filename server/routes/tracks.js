@@ -6,7 +6,7 @@
 var path = require('path');
 var express = require('express');
 var multer = require('multer');
-var queries = require('../db/queries/file');
+var queries = require('../db/queries/track');
 var md5 = require('md5-file/promise');
 var taglib = require('taglib2');
 
@@ -33,18 +33,22 @@ function hashFile (req, res, next) {
 }
 
 function readTags(req, res, next) {
+    let tag;
     try {
-        req.file.tag = taglib.readTagsSync(req.file.path);
+        tag = taglib.readTagsSync(req.file.path);
     } catch (err) {
         next(err);
     }
+    req.file.title = tag.title;
+    req.file.artist = tag.artist;
+    req.file.album = tag.album;
+    req.file.tracknum = tag.track.toString();
     next();
 }
 
-router.get('/', queries.getAllFiles);
-router.get('/:id', queries.getFile);
-router.post('/', upload.single('lefile'), hashFile, readTags, queries.createFile);
-router.put('/:id', upload.single('lefile'), hashFile, readTags, queries.updateFile);
-router.delete('/:id', queries.removeFile);
+router.get('/', queries.getAllTracks);
+router.get('/:id', queries.getTrack);
+router.post('/', upload.single('lefile'), hashFile, readTags, queries.createTrack);
+router.delete('/:id', queries.removeTrack);
 
 module.exports = router;
