@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerService } from './player.service';
 import { Track } from './track';
-import { FilesService } from '../files/files.service';
+import { TracksService } from './tracks.service';
 
 @Component({
     selector: 'app-music-player',
@@ -14,8 +14,8 @@ export class MusicPlayerComponent implements OnInit {
     
 
     constructor(
-        private playerService: PlayerService,
-        private filesService: FilesService
+        private tracksService: TracksService,
+        private playerService: PlayerService
     ) { }
 
     ngOnInit() {
@@ -26,20 +26,11 @@ export class MusicPlayerComponent implements OnInit {
         event.stopPropagation();
         this.playerService.addTrack(track);
     }
-
-    play(event: Event): void {
-        event.stopPropagation();
-        this.playerService.play();
-    }
-
-    pause(event: Event): void {
-        event.stopPropagation();
-        this.playerService.pause();
-    }
+    
 
     private getTracks() {
-        this.filesService.getFiles().subscribe(
-            files => this.tracks = files.filter( f => { return f.name.substr(f.name.length - 4) === '.mp3'; }), // grab *.mp3 files
+        this.tracksService.getTracks().subscribe(
+            tracks => this.tracks = tracks,
             error => this.errorMessage = <any>error
         );
     }

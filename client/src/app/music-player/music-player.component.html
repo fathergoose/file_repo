@@ -1,12 +1,22 @@
-<p>
-  music-player works!
-</p>
-<button (click)="play($event)">Play</button>
-<button (click)="pause($event)">Pause</button>
-<div *ngFor="let track of tracks" ><button (click)="addTrack(track, $event)">add</button> 
-     <div>{{track.name}}</div>
-     <div>URL: {{track.url}}</div>
-</div>
-<div class ="well">
-    <app-playlist [playerService]="playerService"></app-playlist>
+
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-condensed">
+            <tr *ngFor="let track of tracks">
+                <td>
+                    <button (click)="addTrack(track, $event)" class="btn btn-xs btn-success">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                </td>
+                <td>{{track.title}}</td>
+                <td>{{track.artist}}</td>
+                <td>{{track.album}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <div class="well">
+            <app-playlist></app-playlist>
+        </div>
+    </div>
 </div>

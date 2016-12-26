@@ -1,8 +1,21 @@
-<p>
-    playlist works!
-</p>
-
-<div *ngFor="let track of playerService.playlist; let i=index">
-    <a (click)="removeTrack(i, $event)">X</a>
-    {{track.name}}
+<div>
+    <h4>{{playerService.playlist[playerService.playing]?.artist}}</h4>
+    <h5>{{playerService.playlist[playerService.playing]?.title}}</h5>
 </div>
+<div class="row">
+    <div id="controls" class="col-md-3">
+        <button (click)="previous($event)" class="btn">Previous</button>
+        <button (click)="play($event)" class="btn">Play</button>
+        <button (click)="pause($event)" class="btn">Pause</button>
+        <button (click)="next($event)" class="btn">Next</button>
+    </div>
+</div>
+<table class="table table-condensed">
+    <tr *ngFor="let track of playerService.playlist; let i=index"
+        [ngClass]="{ 'success': i === playerService.playing }">
+        <td>
+                <span (click)="removeTrack(i, $event)" class="glyphicon glyphicon-remove clickable" aria-hidden="true"></span>
+        </td>
+        <td>{{track.title}}</td>
+    </tr>
+</table>

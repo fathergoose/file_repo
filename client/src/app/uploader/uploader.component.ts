@@ -14,7 +14,7 @@ export class UploaderComponent {
     uploadFile: any;
     hasBaseDropZoneOver: boolean = false;
     options: Object = {
-        url: '/api/files',
+        url: '/api/tracks',
         fieldName: 'lefile'
 
     };
