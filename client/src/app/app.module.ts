@@ -13,6 +13,9 @@ import { PlaylistComponent } from './main/player/playlist/playlist.component';
 import { LibraryComponent } from './main/library/library.component';
 import { MainComponent } from './main/main.component';
 import { SettingsComponent } from './settings/settings.component';
+import { TracksComponent } from './main/library/tracks/tracks.component';
+import { ArtistsComponent } from './main/library/artists/artists.component';
+import { AlbumsComponent } from './main/library/albums/albums.component';
 
 const appRoutes: Routes = [
     { path: 'listen', component: MainComponent },
@@ -30,6 +33,9 @@ const appRoutes: Routes = [
         LibraryComponent,
         MainComponent,
         SettingsComponent,
+        TracksComponent,
+        ArtistsComponent,
+        AlbumsComponent,
     ],
     imports: [
         BrowserModule,

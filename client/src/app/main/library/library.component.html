@@ -6,22 +6,13 @@
         </div>
     </div>
     <ul class="nav nav-tabs">
-        <li role="presentation" href="#"  class="active"><a>Artist</a></li>
-        <li role="presentation" href="#" ><a>Alubum</a></li>
-        <li role="presentation" href="#" ><a>All</a></li>
+        <li role="presentation" (click)="view = 'artists'" [ngClass]="{'active': view === 'artists'}"><a>Artist</a></li>
+        <li role="presentation" (click)="view = 'albums'" [ngClass]="{'active': view === 'albums'}"><a>Alubums</a></li>
+        <li role="presentation" (click)="view = 'tracks'" [ngClass]="{'active': view === 'tracks'}"><a>Tracks</a></li>
     </ul>
     <div id="library">
-    <table class="table table-condensed">
-        <tr *ngFor="let track of tracks">
-            <td>
-                <button (click)="addTrack(track, $event)" class="btn btn-xs btn-success">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
-            </td>
-            <td>{{track.title}}</td>
-            <td>{{track.artist}}</td>
-            <td>{{track.album}}</td>
-        </tr>
-    </table>
+            <app-tracks *ngIf="view === 'tracks'"></app-tracks>
+            <app-albums *ngIf="view === 'albums'"></app-albums>
+            <app-artists *ngIf="view === 'artists'"></app-artists>
     </div>
 </div>

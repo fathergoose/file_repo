@@ -1,0 +1,12 @@
+<table class="table table-condensed">
+    <tr *ngFor="let track of tracks">
+        <td>
+            <button (click)="addTrack(track, $event)" class="btn btn-xs btn-success">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+        </td>
+        <td>{{track.title}}</td>
+        <td>{{track.artist}}</td>
+        <td>{{track.album}}</td>
+    </tr>
+</table>
