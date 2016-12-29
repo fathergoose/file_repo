@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { FilesComponent } from './files/files.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { Ng2UploaderModule } from 'ng2-uploader';
@@ -13,7 +12,6 @@ import { MusicPlayerComponent } from './music-player/music-player.component';
 import { PlaylistComponent } from './music-player/playlist/playlist.component';
 
 const appRoutes: Routes = [
-    { path: 'files', component: FilesComponent },
     { path: 'music', component: MusicPlayerComponent }
     // { path: '', component: AppComponent } this will recurse as setup now
 ]
@@ -21,7 +19,6 @@ const appRoutes: Routes = [
 @NgModule({
     declarations: [
         AppComponent,
-        FilesComponent,
         UploaderComponent,
         NavbarComponent,
         MusicPlayerComponent,

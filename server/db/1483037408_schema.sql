@@ -35,55 +35,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: files; Type: TABLE; Schema: public; Owner: alilseman
---
-
-CREATE TABLE files (
-    id integer NOT NULL,
-    name character varying,
-    path character varying,
-    hash character(32),
-    url character varying
-);
-
-
-ALTER TABLE files OWNER TO alilseman;
-
---
--- Name: files_id_seq; Type: SEQUENCE; Schema: public; Owner: alilseman
---
-
-CREATE SEQUENCE files_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE files_id_seq OWNER TO alilseman;
-
---
--- Name: files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: alilseman
---
-
-ALTER SEQUENCE files_id_seq OWNED BY files.id;
-
-
---
--- Name: things; Type: TABLE; Schema: public; Owner: alilseman
---
-
-CREATE TABLE things (
-    id integer,
-    name character varying(255),
-    color character varying(255)
-);
-
-
-ALTER TABLE things OWNER TO alilseman;
-
---
 -- Name: tracks; Type: TABLE; Schema: public; Owner: alilseman
 --
 
@@ -123,25 +74,10 @@ ALTER SEQUENCE tracks_id_seq OWNED BY tracks.id;
 
 
 --
--- Name: files id; Type: DEFAULT; Schema: public; Owner: alilseman
---
-
-ALTER TABLE ONLY files ALTER COLUMN id SET DEFAULT nextval('files_id_seq'::regclass);
-
-
---
 -- Name: tracks id; Type: DEFAULT; Schema: public; Owner: alilseman
 --
 
 ALTER TABLE ONLY tracks ALTER COLUMN id SET DEFAULT nextval('tracks_id_seq'::regclass);
-
-
---
--- Name: files files_pkey; Type: CONSTRAINT; Schema: public; Owner: alilseman
---
-
-ALTER TABLE ONLY files
-    ADD CONSTRAINT files_pkey PRIMARY KEY (id);
 
 
 --
