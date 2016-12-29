@@ -71,42 +71,6 @@ ALTER SEQUENCE files_id_seq OWNED BY files.id;
 
 
 --
--- Name: pups; Type: TABLE; Schema: public; Owner: alilseman
---
-
-CREATE TABLE pups (
-    id integer NOT NULL,
-    name character varying,
-    breed character varying,
-    age integer,
-    sex character varying
-);
-
-
-ALTER TABLE pups OWNER TO alilseman;
-
---
--- Name: pups_id_seq; Type: SEQUENCE; Schema: public; Owner: alilseman
---
-
-CREATE SEQUENCE pups_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE pups_id_seq OWNER TO alilseman;
-
---
--- Name: pups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: alilseman
---
-
-ALTER SEQUENCE pups_id_seq OWNED BY pups.id;
-
-
---
 -- Name: things; Type: TABLE; Schema: public; Owner: alilseman
 --
 
@@ -166,13 +130,6 @@ ALTER TABLE ONLY files ALTER COLUMN id SET DEFAULT nextval('files_id_seq'::regcl
 
 
 --
--- Name: pups id; Type: DEFAULT; Schema: public; Owner: alilseman
---
-
-ALTER TABLE ONLY pups ALTER COLUMN id SET DEFAULT nextval('pups_id_seq'::regclass);
-
-
---
 -- Name: tracks id; Type: DEFAULT; Schema: public; Owner: alilseman
 --
 
@@ -185,14 +142,6 @@ ALTER TABLE ONLY tracks ALTER COLUMN id SET DEFAULT nextval('tracks_id_seq'::reg
 
 ALTER TABLE ONLY files
     ADD CONSTRAINT files_pkey PRIMARY KEY (id);
-
-
---
--- Name: pups pups_pkey; Type: CONSTRAINT; Schema: public; Owner: alilseman
---
-
-ALTER TABLE ONLY pups
-    ADD CONSTRAINT pups_pkey PRIMARY KEY (id);
 
 
 --
