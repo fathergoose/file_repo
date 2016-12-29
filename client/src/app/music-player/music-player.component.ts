@@ -15,7 +15,7 @@ export class MusicPlayerComponent implements OnInit {
 
     constructor(
         private tracksService: TracksService,
-        private playerService: PlayerService
+        private playerService: PlayerService,
     ) { }
 
     ngOnInit() {
