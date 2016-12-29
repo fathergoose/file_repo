@@ -1,0 +1,12 @@
+
+
+<table id="playlist" class="table table-condensed table-hover">
+    <tr *ngFor="let track of playerService.playlist; let i=index" 
+        [ngClass]="{ 'active': i === playerService.playing }"
+        (click)="playTrack(i, $event)">
+        <td class="text-center">
+            <span (click)="removeTrack(i, $event)" class="glyphicon glyphicon-minus clickable remove-track" title="Remove from playlist" aria-hidden="true"></span>
+        </td>
+        <td>{{track.title}}</td>
+    </tr>
+</table>

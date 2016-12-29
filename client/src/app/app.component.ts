@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { PlayerService } from './music-player/player.service';
-import { TracksService } from './music-player/tracks.service';
+import { PlayerService } from './main/player/player.service';
+import { TracksService } from './main/library/tracks/tracks.service';
 
 @Component({
   selector: 'app-root',

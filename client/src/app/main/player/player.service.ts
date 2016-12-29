@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Track } from './track'
+import { Track } from '../library/tracks/track'
 
 @Injectable()
 export class PlayerService {

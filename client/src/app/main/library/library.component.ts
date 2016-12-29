@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerService } from './player.service';
-import { Track } from './track';
-import { TracksService } from './tracks.service';
+import { PlayerService } from '../player/player.service';
+import { Track } from './tracks/track';
+import { TracksService } from './tracks/tracks.service';
 
 @Component({
-    selector: 'app-music-player',
-    templateUrl: './music-player.component.html',
-    styleUrls: ['./music-player.component.css']
+  selector: 'app-library',
+  templateUrl: './library.component.html',
+  styleUrls: ['./library.component.css']
 })
-export class MusicPlayerComponent implements OnInit {
-    private errorMessage: string;
+export class LibraryComponent implements OnInit {
+private errorMessage: string;
     private tracks: Track[];
     
 

@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { Ng2UploaderModule } from 'ng2-uploader';
-import { MusicPlayerComponent } from './music-player/music-player.component';
-import { PlaylistComponent } from './music-player/playlist/playlist.component';
+import { MusicPlayerComponent } from './main/player/player.component';
+import { PlaylistComponent } from './main/player/playlist/playlist.component';
+import { LibraryComponent } from './main/library/library.component';
+import { MainComponent } from './main/main.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const appRoutes: Routes = [
-    { path: 'music', component: MusicPlayerComponent }
-    // { path: '', component: AppComponent } this will recurse as setup now
+    { path: 'listen', component: MainComponent },
+    { path: 'configure', component: SettingsComponent },
+    { path: '', redirectTo: '/listen', pathMatch: 'full' },
 ]
 
 @NgModule({
@@ -23,6 +27,9 @@ const appRoutes: Routes = [
         NavbarComponent,
         MusicPlayerComponent,
         PlaylistComponent,
+        LibraryComponent,
+        MainComponent,
+        SettingsComponent,
     ],
     imports: [
         BrowserModule,

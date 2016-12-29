@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div>
+            <h4>{{playerService.playlist[playerService.playing]?.artist}}&nbsp; </h4>
+            <h5>{{playerService.playlist[playerService.playing]?.title}}&nbsp;</h5>
+            <h4>
+                <small>
+                    <span class="timer" id="playback-time">--:--</span> / <span class="timer" id="playback-duration">--:--</span>
+                </small>
+            </h4>
+        </div>
+
+        <div class="text-center">
+            <div id="controls" class="btn-group btn-group-lg">
+                <button (click)="previous($event)" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
+                <ng-container [ngSwitch]="playerService.currentAudioElement.paused">
+                    <button *ngSwitchCase="true" (click)="play($event)" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-play"></span></button>
+                    <button *ngSwitchCase="false" (click)="pause($event)" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-pause"></span></button>
+                </ng-container>
+                <button (click)="next($event)" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <input #range (input)="updatePlaybackTime(range.value)" type="range" id="progress-bar" max="1" value="0" step=".001" />
+        </div>
+
+    </div>
+    <app-playlist></app-playlist>
+</div>

@@ -1,0 +1,27 @@
+<div class="panel panel-default"> 
+    <div class="panel-heading">
+        Library
+        <div class="pull-right">
+        <app-uploader></app-uploader>
+        </div>
+    </div>
+    <ul class="nav nav-tabs">
+        <li role="presentation" href="#"  class="active"><a>Artist</a></li>
+        <li role="presentation" href="#" ><a>Alubum</a></li>
+        <li role="presentation" href="#" ><a>All</a></li>
+    </ul>
+    <div id="library">
+    <table class="table table-condensed">
+        <tr *ngFor="let track of tracks">
+            <td>
+                <button (click)="addTrack(track, $event)" class="btn btn-xs btn-success">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+            </td>
+            <td>{{track.title}}</td>
+            <td>{{track.artist}}</td>
+            <td>{{track.album}}</td>
+        </tr>
+    </table>
+    </div>
+</div>

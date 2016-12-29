@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
-import { Track } from '../track';
+import { Track } from '../../library/tracks/track';
 import { PlayerService } from '../player.service';
 
 @Component({
