@@ -1,20 +1,40 @@
-<div>
-    <h4>{{playerService.playlist[playerService.playing]?.artist}}</h4>
-    <h5>{{playerService.playlist[playerService.playing]?.title}}</h5>
+<div class="panel-heading">
+    Now Playing
 </div>
-<div class="row">
-    <div id="controls" class="col-md-3">
-        <button (click)="previous($event)" class="btn">Previous</button>
-        <button (click)="play($event)" class="btn">Play</button>
-        <button (click)="pause($event)" class="btn">Pause</button>
-        <button (click)="next($event)" class="btn">Next</button>
+<div class="panel-body">
+    <div>
+        <h4>{{playerService.playlist[playerService.playing]?.artist}}&nbsp; </h4>
+        <h5>{{playerService.playlist[playerService.playing]?.title}}&nbsp;</h5>
+        <h4>
+            <small>
+                <span class="timer" id="playback-time">--:--</span> / <span class="timer" id="playback-duration">--:--</span>
+            </small>
+        </h4>
     </div>
+
+    <div class="text-center">
+        <div id="controls" class="btn-group btn-group-lg">
+            <button (click)="previous($event)" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
+            <ng-container [ngSwitch]="playerService.currentAudioElement.paused">
+                <button *ngSwitchCase="true" (click)="play($event)" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-play"></span></button>
+                <button *ngSwitchCase="false" (click)="pause($event)" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-pause"></span></button>
+            </ng-container>
+            <button (click)="next($event)" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <input #range (input)="updatePlaybackTime(range.value)" type="range" id="progress-bar" max="1" value="0" step=".001" />
+    </div>
+
 </div>
-<table class="table table-condensed">
-    <tr *ngFor="let track of playerService.playlist; let i=index"
-        [ngClass]="{ 'success': i === playerService.playing }">
-        <td>
-                <span (click)="removeTrack(i, $event)" class="glyphicon glyphicon-remove clickable" aria-hidden="true"></span>
+
+<table id="playlist" class="table table-condensed table-hover">
+    <tr *ngFor="let track of playerService.playlist; let i=index" 
+        [ngClass]="{ 'active': i === playerService.playing }"
+        (click)="playTrack(i, $event)">
+        <td class="text-center">
+            <span (click)="removeTrack(i, $event)" class="glyphicon glyphicon-minus clickable remove-track" title="Remove from playlist" aria-hidden="true"></span>
         </td>
         <td>{{track.title}}</td>
     </tr>

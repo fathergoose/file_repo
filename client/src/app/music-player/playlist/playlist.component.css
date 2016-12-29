@@ -1,0 +1,27 @@
+#controls button {
+    border: none;
+}
+
+#controls {
+    margin-top: 1em;
+}
+
+#progress-bar {
+    margin-top: 1em;
+    width: 100%;
+}
+
+.remove-track {
+    color: #aaa;
+}
+.remove-track:hover {
+    color: #000;
+}
+
+div.form-group {
+    width: 100%;
+}
+
+#playlist tr {
+    cursor: default;
+}

@@ -9,9 +9,9 @@ export class PlayerService {
     public playing: number; // depricated, change to 'currentIndex'
     public currentIndex: number;
     // TODO: Add ended event to currentAudioElement
-    private currentAudioElement: HTMLAudioElement = document.createElement('audio');
+    public currentAudioElement: HTMLAudioElement = document.createElement('audio');
     private nextAudioElement: HTMLAudioElement = document.createElement('audio');
-    private paused: Boolean = false;
+    private paused: boolean = false;
 
 
     addTrack(track: Track): void {
@@ -19,40 +19,39 @@ export class PlayerService {
             this.playing = 0;
         }
         this.playlist.push(track);
-        console.log(this.playlist);
     }
 
     removeTrack(index: number): void {
         this.playlist.splice(index, 1);
-        console.log(this.playlist);
     }
 
     play(): void {
-        if ( !this.playlist.length ) return;
-        if ( this.currentAudioElement.src && this.paused === true) { this.paused = false; return; } 
+        if (!this.paused) this.syncList();
+        this.currentAudioElement.play();
+        this.paused = false;
+    }
 
-        if ( this.playing + 1 === this.playlist.length  ) {     // if wer're on the last song
+    private syncList(): void {
+        if ( !this.playlist.length ) return;
+        if ( this.playing + 1 === this.playlist.length ) {     // if we're on the last song
             this.currentAudioElement.src = this.playlist[this.playing].url;
         } else {
             this.currentAudioElement.src = this.playlist[this.playing].url;
             this.nextAudioElement.src = this.playlist[this.playing + 1].url;
-            this.currentAudioElement.onended = () => this.next();
         }
-        this.currentAudioElement.play();
-        console.log(this.playlist);
+        this.currentAudioElement.onended = () => this.next();
     }
 
     pause(): void {
         this.currentAudioElement.pause();
         this.paused = true;
-        console.log(this.playlist);
     }
 
     next(): void {
-        if ( this.playing + 1 < this.playlist.length ) {
-        this.playing++;
-        this.play();
-        console.log(this.playlist);
+        if (this.playing + 1 < this.playlist.length) {
+            this.playing++;
+            this.syncList();
+            if (!this.paused) this.play(); 
         } else {
             this.endOfList();
         }
@@ -62,11 +61,17 @@ export class PlayerService {
         if ( this.currentAudioElement.currentTime < 1
              && this.playing > 0 ) {
             this.playing--;
-            this.play();
-        } else {
-            this.play();
-            console.log(this.playlist);
         }
+        this.syncList();
+        if (!this.paused) {
+            this.play();
+        }
+    }
+
+    playAtIndex(index: number) {
+        this.playing = index;
+        this.syncList();
+        this.play();
     }
 
     private endOfList(): void {
