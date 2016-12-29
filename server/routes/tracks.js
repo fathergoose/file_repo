@@ -1,8 +1,3 @@
-/*
-    TODO:
-        Refactor this for use with tracks
-*/
-
 var path = require('path');
 var express = require('express');
 var multer = require('multer');
