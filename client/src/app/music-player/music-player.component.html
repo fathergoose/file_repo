@@ -8,6 +8,12 @@
                 <app-uploader></app-uploader>
                 </div>
             </div>
+            <ul class="nav nav-tabs">
+                <li role="presentation" href="#"  class="active"><a>Artist</a></li>
+                <li role="presentation" href="#" ><a>Alubum</a></li>
+                <li role="presentation" href="#" ><a>All</a></li>
+            </ul>
+            <div id="library">
             <table class="table table-condensed">
                 <tr *ngFor="let track of tracks">
                     <td>
@@ -20,6 +26,7 @@
                     <td>{{track.album}}</td>
                 </tr>
             </table>
+            </div>
         </div>
     </div>
     <div class="col-lg-4 col-md-4">

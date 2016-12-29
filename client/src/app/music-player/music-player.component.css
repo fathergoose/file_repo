@@ -1,3 +1,12 @@
 #controls {
     margin-bottom: 1em;
 }
+
+.borderless td, .borderless th {
+    border: none;
+}
+
+#library {
+    max-height:600px;
+    overflow-y: auto;
+}
