@@ -36,4 +36,9 @@ export class UploaderComponent {
             alert('File is too large');
         }
     }
+
+    clickUploaderInput(event: Event): void {
+        event.stopPropagation();
+        document.getElementById('uploader-input').click();
+    }
 }

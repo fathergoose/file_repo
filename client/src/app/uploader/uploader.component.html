@@ -1,11 +1,18 @@
-<p>
-  uploader works!
-</p>
-<input type="file"
-       ngFileSelect
-       [options]="options"
-       (onUpload)="handleUpload($event)"
-       (beforeUpload)="beforeUpload($event)"
-       multiple>
+<input 
+    id="uploader-input"
+    type="file"
+    ngFileSelect
+    [options]="options"
+    (onUpload)="handleUpload($event)"
+    (beforeUpload)="beforeUpload($event)"
+    multiple
+/>
 
-Response: {{ uploadFile | json }}
+<button 
+    id="upload-btn"
+    class="btn btn-default btn-xs"
+    (click)="clickUploaderInput($event)"
+>
+    <span class="glyphicon glyphicon-plus"></span> Upload
+</button>
+
