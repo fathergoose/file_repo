@@ -8,17 +8,16 @@ import { FileSelectDirective, FileUploader } from 'ng2-file-upload/ng2-file-uplo
 })
 
 export class UploaderComponent {
-    constructor() { }
-
-
     uploadFile: any;
-    hasBaseDropZoneOver: boolean = false;
-    options: Object = {
-        url: '/api/tracks',
+    private targetURL: string = '/api/tracks';
+    private hasBaseDropZoneOver: boolean = false;
+    private options: Object = {
+        url: this.targetURL,
         fieldName: 'lefile'
-
     };
-    sizeLimit = 1000000000000000000;
+    private sizeLimit: number = 1000000000000000000;
+
+    constructor() { }
 
     handleUpload(data): void {
         if (data && data.response) {
