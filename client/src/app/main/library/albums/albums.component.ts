@@ -21,9 +21,39 @@ export class AlbumsComponent implements OnInit {
         this.getAlbums();
     }
 
+    public addAlbum(album: Album) {
+        if (album.tracks) {
+            this.playerService.playlist.push(...album.tracks);
+        } else {
+          this.albumsService.getTracksFromAlbum(album).subscribe(
+                tracks => {
+                    album.tracks = tracks;
+                    this.playerService.playlist.push(...album.tracks);
+                },
+                error => this.errorMessage = <any>error
+            );  
+        }
+    };
+
+    public expandAlbum(album: Album) {
+        if (album.expanded) {
+            album.expanded = false;
+        } else if (album.tracks) {
+            album.expanded = true;
+        } else {
+            this.albumsService.getTracksFromAlbum(album).subscribe(
+                tracks => {
+                    album.tracks = tracks;
+                    album.expanded = true;
+                },
+                error => this.errorMessage = <any>error
+            );
+        }
+    }
+
     private getAlbums() {
         this.albumsService.getAlbums().subscribe(
-            tracks => this.albums = tracks,
+            albums => this.albums = albums,
             error => this.errorMessage = <any>error
         );
     }

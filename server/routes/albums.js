@@ -7,3 +7,4 @@ var router = express.Router();
 module.exports = router;
 
 router.get('/', queries.getAllAlbums);
+router.get('/:album', queries.getTracksFromAlbum);

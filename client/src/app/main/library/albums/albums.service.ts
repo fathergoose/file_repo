@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Album } from './album';
+import { Track } from '../tracks/track';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -13,6 +14,12 @@ private apiUrl: string = 'api/albums';
 
     public getAlbums (): Observable<Album[]> {
         return this.http.get(this.apiUrl)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    }
+
+    public getTracksFromAlbum (album: Album): Observable<Track[]> {
+        return this.http.get(this.apiUrl + '/' + album.album)
                         .map(this.extractData)
                         .catch(this.handleError);
     }
